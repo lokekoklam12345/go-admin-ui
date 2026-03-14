@@ -79,6 +79,9 @@
     "webpack-bundle-analyzer": "^3.8.0",
     "xlsx": "0.16.5"
   },
+  "volta": {
+    "node": "14.16.0"
+  },
   "devDependencies": {
     "@babel/core": "7.11.1",
     "@babel/register": "^7.10.5",
