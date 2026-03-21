@@ -116,7 +116,7 @@
               <el-table-column label="登录名" width="105" prop="username" sortable="custom" :show-overflow-tooltip="true" />
               <el-table-column label="昵称" prop="nickName" :show-overflow-tooltip="true" />
               <el-table-column label="部门" prop="dept.deptName" :show-overflow-tooltip="true" />
-              <el-table-column label="手机号" prop="phone" width="108" />
+              <el-table-column label="手机号" prop="phone" width="128" />
               <el-table-column label="状态" width="80" sortable="custom">
                 <template slot-scope="scope">
                   <el-switch
@@ -201,7 +201,7 @@
             </el-col>
             <el-col :span="12">
               <el-form-item label="手机号码" prop="phone">
-                <el-input v-model="form.phone" placeholder="请输入手机号码" maxlength="11" />
+                <el-input v-model="form.phone" placeholder="请输入手机号码，例如 01234567890" maxlength="11" />
               </el-form-item>
             </el-col>
             <el-col :span="12">
@@ -405,7 +405,7 @@ export default {
         ],
         phone: [
           { required: true, message: '手机号码不能为空', trigger: 'blur' },
-          { pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/, message: '请输入正确的手机号码', trigger: 'blur' }
+          { pattern: /^01\d{9}$/, message: '请输入正确的手机号码，格式如 01234567890', trigger: 'blur' }
         ]
       }
     }

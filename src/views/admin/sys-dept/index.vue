@@ -125,7 +125,7 @@
               </el-col>
               <el-col :span="12">
                 <el-form-item label="联系电话" prop="phone">
-                  <el-input v-model="form.phone" placeholder="请输入联系电话" maxlength="11" />
+                  <el-input v-model="form.phone" placeholder="请输入联系电话，例如 01234567890" maxlength="11" />
                 </el-form-item>
               </el-col>
               <el-col :span="12">
@@ -210,8 +210,8 @@ export default {
         ],
         phone: [
           {
-            pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
-            message: '请输入正确的手机号码',
+            pattern: /^01\d{9}$/,
+            message: '请输入正确的电话号码，格式如 01234567890',
             trigger: 'blur'
           }
         ]
