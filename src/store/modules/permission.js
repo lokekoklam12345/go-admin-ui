@@ -3,6 +3,25 @@ import { getRoutes } from '@/api/admin/sys-role'
 import Layout from '@/layout'
 // import sysuserindex from '@/views/sysuser/index'
 
+function shouldKeepMenu(item) {
+  const isTargetMenu = item.title === '用户管理' ||
+    item.title === '部门管理' ||
+    item.component === '/admin/sys-user/index' ||
+    item.component === '/admin/sys-dept/index' ||
+    item.path === 'sys-user' ||
+    item.path === 'sys-dept'
+
+  if (isTargetMenu) {
+    return true
+  }
+
+  if (!item.children || item.children.length === 0) {
+    return false
+  }
+
+  return item.children.some(child => shouldKeepMenu(child))
+}
+
 /**
  * Use meta.role to determine if the current user has permission
  * @param roles
@@ -38,7 +57,7 @@ export function generaMenu(routes, data) {
     const menu = {
       path: item.path,
       component: item.component === 'Layout' ? Layout : loadView(item.component),
-      hidden: item.visible !== '0',
+      hidden: item.visible !== '0' || !shouldKeepMenu(item),
       children: [],
       name: item.menuName,
       meta: {
