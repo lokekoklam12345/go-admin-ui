@@ -81,7 +81,7 @@ const actions = {
     })
   },
   // 退出系统
-  LogOut({ commit, state }) {
+  LogOut({ commit, state, dispatch }) {
     return new Promise((resolve, reject) => {
       logout(state.token).then(() => {
         commit('SET_TOKEN', '')
@@ -89,6 +89,8 @@ const actions = {
         commit('SET_PERMISSIONS', [])
         removeToken()
         storage.clear()
+        resetRouter()
+        dispatch('tagsView/delAllViews', null, { root: true })
         resolve()
       }).catch(error => {
         reject(error)

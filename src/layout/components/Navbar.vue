@@ -82,7 +82,7 @@ export default {
         type: 'warning'
       }).then(() => {
         this.$store.dispatch('user/LogOut').then(() => {
-          location.reload()
+          this.$router.replace('/login').catch(() => {})
         })
       })
     }
