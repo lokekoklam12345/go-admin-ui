@@ -308,7 +308,7 @@ export default {
             .dispatch('user/login', this.loginForm)
             .then(() => {
               this.$router
-                .push({ path: this.redirect || '/', query: this.otherQuery })
+                .push({ path: this.redirect || '/admin/sys-user', query: this.otherQuery })
                 .catch(() => {})
             })
             .catch(() => {
